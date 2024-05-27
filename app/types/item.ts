@@ -12,5 +12,6 @@ export interface Item {
     website_url: string;
     cmc_url: string;
     coingecko_url: string;
+    name: string;
   }
   

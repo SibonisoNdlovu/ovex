@@ -12,16 +12,27 @@ const ListContainer: React.FC = () => {
 
   // Fetching currency data from an API on component mount
   useEffect(() => {
-    fetch('https://api.review.ovex.io/mobile_api/v1/currency/utility')
-      .then(response => response.json())
-      .then(data => {
-        setCurrencies(data); // Setting fetched data to currencies state
-        setIsLoading(false); 
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error); 
-        setIsLoading(false); 
-      });
+    const fetchData = async () => {
+      try {
+        const [currencyResponse, nameResponse] = await Promise.all([
+          fetch('https://api.review.ovex.io/mobile_api/v1/currency/utility').then(response => response.json()),
+          fetch('https://api.review.ovex.io/mobile_api/v1/currency').then(response => response.json())
+        ]);
+
+        const mergedCurrencies = currencyResponse.map((currency: Item) => {
+          const nameData = nameResponse.find((name: any) => name.id === currency.currency_id);
+          return { ...currency, name: nameData?.name };
+        });
+
+        setCurrencies(mergedCurrencies);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Filtering currencies based on search text
