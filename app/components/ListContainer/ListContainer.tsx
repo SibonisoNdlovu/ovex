@@ -42,7 +42,7 @@ const ListContainer: React.FC = () => {
   );
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <div className="max-w-8xl mx-auto p-4">
       <div className="relative">
         <input
           type="text"
@@ -54,10 +54,10 @@ const ListContainer: React.FC = () => {
       </div>
       {/* Showing loading spinner if data is loading */}
       {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="loader ease-linear rounded-full border-4 border-t-4 border-black h-6 w-6 animate-spin font-bold"></div>
-          </div>
-        )}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="loader ease-linear rounded-full border-4 border-t-4 border-black h-12 w-12 animate-spin"></div>
+        </div>
+      )}
       {/* Rendering each filtered currency as a ListItem */}
       <div className="text-left">
         {filteredCurrencies.map(currency => (
@@ -66,6 +66,7 @@ const ListContainer: React.FC = () => {
       </div>
     </div>
   );
+  
 };
 
 export default ListContainer;
