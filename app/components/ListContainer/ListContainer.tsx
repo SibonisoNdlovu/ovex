@@ -37,8 +37,7 @@ const ListContainer: React.FC = () => {
 
   // Filtering currencies based on search text
   const filteredCurrencies = currencies.filter(currency =>
-    currency.currency_id.toLowerCase().includes(searchText.toLowerCase()) ||
-    currency.description.toLowerCase().includes(searchText.toLowerCase())
+    currency.name.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
@@ -46,7 +45,7 @@ const ListContainer: React.FC = () => {
       <div className="relative">
         <input
           type="text"
-          placeholder="Search currencies..."
+          placeholder="Search assets..."
           className="w-full p-2 mb-4 border border-gray-300 rounded text-black"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
