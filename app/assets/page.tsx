@@ -1,8 +1,12 @@
+import React from 'react';
+import ListContainer from '../components/ListContainer/ListContainer';
 
-export default function Assets() {
+const Assets: React.FC = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-        hello
-    </main>
+    <div className="min-h-screen bg-gray-50 p-8">
+      <ListContainer />
+    </div>
   );
 }
+
+export default Assets;
