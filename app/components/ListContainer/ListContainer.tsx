@@ -1,4 +1,4 @@
-"use client" // Not sure what this comment means, assuming it's for internal use
+"use client" // This means that by defining a "use client" in a file, all other modules imported into it, including child components, are considered part of the client bundle.
 
 import React, { useState, useEffect } from 'react';
 import { Item } from '@/app/types/item'; 
